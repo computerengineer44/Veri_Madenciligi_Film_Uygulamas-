@@ -4,9 +4,11 @@ IMDB, beyazperde gibi çeşitli film değerlendirme sitelerinden alınan veriler
 Uygulamadan Gösterdiğimiz Örnek Çıktılar
 
 İyi ve Kötü Film Sayısı Tablosu
+
 ![iyi_kotu_film_says](https://github.com/computerengineer44/Veri_Madenciligi_Film_Uygulamasi-/assets/75737540/12065221-463d-44b0-85e4-15c5d4dcf79b)
 
 Cart Confusion Matris ve Film tablosu 
+
 ![cart](https://github.com/computerengineer44/Veri_Madenciligi_Film_Uygulamasi-/assets/75737540/7e0202e5-e181-44e8-ae06-f79aa9748da7)
 
 ![CART_ile_iyi_kotu_film](https://github.com/computerengineer44/Veri_Madenciligi_Film_Uygulamasi-/assets/75737540/95a34e40-0658-41cf-a280-4fcc345f5736)
