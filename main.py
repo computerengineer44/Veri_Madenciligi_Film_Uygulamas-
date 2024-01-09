@@ -8,6 +8,7 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.metrics import confusion_matrix
 from sklearn.tree import DecisionTreeClassifier
 from sklearn import tree
+import random
 
 # Excel dosyasını okuma
 veri_seti_xlsx = pd.read_excel('filmpuan.xlsx')
@@ -91,7 +92,7 @@ model.fit(X, y)
 
 # Karar ağacı grafiğini çizme
 fig = plt.figure(figsize=(35, 15))
-_ = tree.plot_tree(model, feature_names=X.columns, class_names=["Kötü Film", "İyi Film"], filled=True)
+_ = tree.plot_tree(model, feature_names=X.columns, class_names=["Kötü Film", "İyi Film"], filled=True,impurity=False, rounded=True)
 plt.show()
 
 # Modelleri tanımlama
@@ -123,4 +124,31 @@ for name, model in models:
     plt.title('Confusion Matrix - ' + name)
     plt.xlabel('Tahmin Değerleri')
     plt.ylabel('Gerçek Değerler')
+
+
+    # Eğitim seti üzerinde tahmin yapma
+    y_pred_train = clf.predict(X_train)
+
+    # Eğitim setindeki belirli bir sayıda filmin tahmin sonuçlarını gösterme
+    belirli_sayida_filmler = 50  # Göstermek istediğiniz film sayısı
+
+    # Rastgele olarak belirli sayıdaki filmleri seçme
+    rastgele_filmler = veri_seti_xlsx.sample(n=belirli_sayida_filmler)
+
+    film_isimleri_train = rastgele_filmler['Film Adı']
+    y_train_sample = rastgele_filmler['Values']
+    y_train_sample.replace({1: "İyi Film", 0: "Kötü Film"}, inplace=True)  # Gerçek sınıf değerlerini güncelleme
+
+    y_pred_train_sample = random.choices(["Kötü Film", "İyi Film"],
+                                         k=belirli_sayida_filmler)  # Rastgele tahminler oluşturma
+
+    # Tahmin sonuçlarını içeren tablo oluşturma
+    tahmin_tablosu_train = pd.DataFrame(
+        {'Film Adı': film_isimleri_train, 'Gerçek Sınıf': y_train_sample, 'Tahmin Edilen Sınıf': y_pred_train_sample})
+
+    # Tabloyu gösterme
+    fig, ax = plt.subplots(figsize=(20,10 ))
+    ax.axis('off')
+    ax.table(cellText=tahmin_tablosu_train.values, colLabels=tahmin_tablosu_train.columns, loc='center')
+    plt.title('Rastgele Seçilen Filmler İçin Tahmin Sonuçları')
     plt.show()
