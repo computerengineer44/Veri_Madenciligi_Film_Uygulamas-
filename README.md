@@ -1,7 +1,7 @@
 # Veri_Madenciligi_Film_Uygulaması-
 IMDB, beyazperde gibi çeşitli film değerlendirme sitelerinden alınan verilere göre, filmleri değerlendiren ve analiz eden veri madenciliği uygulaması   
 
------------------------------------------------------Uygulamadan Gösterdiğimiz Örnek Çıktılar-------------------------------------------------------------------------
+-----------------------------------------------------Uygulamadan Gösterdiğimiz Örnek Çıktılar----------------------------------------------------------------
 
 İyi ve Kötü Film Sayısı Tablosu
 
